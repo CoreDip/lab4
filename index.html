@@ -1,0 +1,68 @@
+﻿<!DOCTYPE HTML>
+
+<html lang="ru">
+<head>
+  <title>js</title>
+  <script>
+    let students = ['Васьків','Ількович','Петренко','Дорошенко','Кривошапка','Рябокляч'];
+    let exams = ['Математика','Фізика','Програмування','Фізкультура :)'];
+    let points =[[60,75,80,90],[90,100,60,75],[50,55,30,0],[100,98,99,90],[80,75,60,60],[10,15,25,61]];
+    let n=0;
+    onload=function(){toTable(n);}
+
+	function Next(){
+        document.getElementById("back").disabled=false;
+		if(n<students.length-1){
+			n++;
+			toTable(n);
+            if(n>students.length-2){document.getElementById("next").disabled=true;}
+        }
+    }
+	
+    function Back(){
+        document.getElementById("next").disabled=false;
+		if(n>0){
+			n=n-1;
+			toTable(n);
+			}
+        if(n<=0){document.getElementById("back").disabled=true;}
+	}
+
+    function toTable(n){
+        let t=document.getElementById("t");
+        t.innerHTML="<tr><th width=100 > Студент: </th><th width=100 >"+students[n]+"</th></tr>";
+        t.innerHTML += "<tr><td>"+exams[0]+ "</td><td align='center'>"+points[n][0]+"</td></tr>";
+        t.innerHTML += "<tr><td>"+exams[1]+ "</td><td align='center'>"+points[n][1]+"</td></tr>";
+		t.innerHTML += "<tr><td>"+exams[2]+ "</td><td align='center'>"+points[n][2]+"</td></tr>";
+        t.innerHTML += "<tr><td>"+exams[3]+ "</td><td align='center'>"+points[n][3]+"</td></tr>";
+
+        if (points[n][0]>89 && points[n][1]>89 && points[n][2]>89 && points[n][3]>89){
+            document.querySelector('#Status').innerHTML = " Відмінник ";
+            document.querySelector('#Status').style = "border: 2px solid grey; background-color: #007f01; color:white;";
+        }
+        else if(points[n][0]>=60 && points[n][1]>=60 && points[n][2]>=60 && points[n][3]>=60){
+            document.querySelector('#Status').innerHTML = " Хорошист ";
+            document.querySelector('#Status').style = "border: 2px solid grey; background-color: #cdf83a; color:grey;";
+        }
+        else if(points[n][0]<60 && points[n][1]<60 && points[n][2]<60 && points[n][3]<60){
+            document.querySelector('#Status').innerHTML = " Відрахувати ";
+            document.querySelector('#Status').style = "border: 2px solid grey; background-color: #fd0001; color:white;";
+        }
+        else {
+            document.querySelector('#Status').innerHTML = " Ризик відрахуавння ";
+            document.querySelector('#Status').style = "border: 2px solid grey; background-color: #fdfd01; color:grey;";
+        }
+    }
+  </script>
+</head>
+<body bgcolor="#fff8dc">
+<form align="center" name="f">
+	<input type="button" name="back" id="back" onclick="Back();"  value="<" size="62" disabled="true">
+	<input type="button" name="next" id="next" onclick="Next();"  value=">" size="62"><br><br>
+    <table style="border: 3px double grey;" bgcolor="#e6e6fa" align="center" id="t" border='1' cellspacing='0' cellpadding='5'> </table><br>
+    <output id="Status"></output>
+</form>
+
+
+</body>
+</html>

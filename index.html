@@ -40,9 +40,13 @@
             document.querySelector('#Status').innerHTML = " Відмінник ";
             document.querySelector('#Status').style = "border: 2px solid grey; background-color: #007f01; color:white;";
         }
-        else if(points[n][0]>=60 && points[n][1]>=60 && points[n][2]>=60 && points[n][3]>=60){
+		else if(points[n][0]>=80 && points[n][1]>=80 && points[n][2]>=80 && points[n][3]>=80){
             document.querySelector('#Status').innerHTML = " Хорошист ";
             document.querySelector('#Status').style = "border: 2px solid grey; background-color: #cdf83a; color:grey;";
+        }
+        else if(points[n][0]>=60 && points[n][1]>=60 && points[n][2]>=60 && points[n][3]>=60){
+            document.querySelector('#Status').innerHTML = " ОК ";
+            document.querySelector('#Status').style = "border: 2px solid grey; background-color: white; color:grey;";
         }
         else if(points[n][0]<60 && points[n][1]<60 && points[n][2]<60 && points[n][3]<60){
             document.querySelector('#Status').innerHTML = " Відрахувати ";
